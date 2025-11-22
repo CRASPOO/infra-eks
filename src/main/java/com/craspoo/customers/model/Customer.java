@@ -1,6 +1,8 @@
 package com.craspoo.customers.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "customers")
@@ -10,9 +12,12 @@ public class Customer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "Name is required")
     @Column(nullable = false)
     private String name;
 
+    @NotBlank(message = "Email is required")
+    @Email(message = "Email should be valid")
     @Column(nullable = false, unique = true)
     private String email;
 

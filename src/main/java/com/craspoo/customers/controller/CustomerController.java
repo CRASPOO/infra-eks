@@ -2,7 +2,7 @@ package com.craspoo.customers.controller;
 
 import com.craspoo.customers.model.Customer;
 import com.craspoo.customers.service.CustomerService;
-import org.springframework.beans.factory.annotation.Autowired;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,8 +13,11 @@ import java.util.List;
 @RequestMapping("/api/customers")
 public class CustomerController {
 
-    @Autowired
-    private CustomerService customerService;
+    private final CustomerService customerService;
+
+    public CustomerController(CustomerService customerService) {
+        this.customerService = customerService;
+    }
 
     @GetMapping
     public ResponseEntity<List<Customer>> getAllCustomers() {
@@ -29,13 +32,13 @@ public class CustomerController {
     }
 
     @PostMapping
-    public ResponseEntity<Customer> createCustomer(@RequestBody Customer customer) {
+    public ResponseEntity<Customer> createCustomer(@Valid @RequestBody Customer customer) {
         Customer created = customerService.createCustomer(customer);
         return ResponseEntity.status(HttpStatus.CREATED).body(created);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Customer> updateCustomer(@PathVariable Long id, @RequestBody Customer customer) {
+    public ResponseEntity<Customer> updateCustomer(@PathVariable Long id, @Valid @RequestBody Customer customer) {
         return customerService.updateCustomer(id, customer)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
