@@ -17,10 +17,10 @@ variable "tags_dev" {
 variable "tags_prod" {
   type = map(any)
   default = {
-    Name        = "customers-prod",
-    Environment = "Production",
-    School = "FIAP",
-    Year = "2025"
+    Name        = "customers-prod"
+    Environment = "Production"
+    School      = "FIAP"
+    Year        = "2025"
   }
 }
 
@@ -32,12 +32,20 @@ variable "cidr_vpc" {
   default = "10.0.0.0/16"
 }
 
-variable "cidr_subnet" {
-  default = "10.0.1.0/24"
-}
+
 
 variable "tags" {
   default = {
     Name = "infra-customers"
   }
+}
+
+variable "principal_user_name" {
+  description = "IAM user name for EKS access"
+  default     = "Camilarspoo"
+}
+
+variable "principal_user_arn" {
+  description = "IAM user ARN for EKS access"
+  default     = "arn:aws:iam::841740286784:user/Camilarspoo"
 }

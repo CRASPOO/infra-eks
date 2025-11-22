@@ -7,8 +7,8 @@ metadata:
   namespace: kube-system
 data:
   mapUsers: |
-    - userarn: arn:aws:iam::841740286784:user/Camilarspoo
-      username: Camilarspoo
+    - userarn: ${var.principal_user_arn}
+      username: ${var.principal_user_name}
       groups:
         - system:masters
 YAML
