@@ -44,5 +44,5 @@ variable "principal_user_arn" {
 }
 
 variable "bucket_name_backend" {
-  default = "sistemapedidos-eks-backend"
+  default = "sistemapedidos-eks"
 }
