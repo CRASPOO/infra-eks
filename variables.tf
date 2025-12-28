@@ -19,7 +19,7 @@ locals {
 variable "tags_prod" {
   type = map(any)
   default = {
-    Name        = "TF-EKS",
+    Name        = "TFEKS",
     Environment = "Production",
     School = "FIAP",
     Year = "2025"
