@@ -2,11 +2,18 @@ variable "region" {
   type    = string
   default = "us-east-1"
 }
-variable "cluster_name" { type = string, default = "SistemaPedidos-eks" }
-variable "expiry_hours" { type = number, default = 24 }
+variable "cluster_name" {
+  type = string
+  default = "SistemaPedidos-eks"
+}
+
+variable "expiry_hours" {
+  type = number
+  default = 24
+}
 
 locals {
-  expiry_iso = timestamp(timeadd(timestamp(), "${var.expiry_hours}h"))
+  expiry_iso = timeadd(timestamp(), format("%dh", var.expiry_hours))
 }
 
 variable "tags_prod" {
@@ -36,7 +43,6 @@ variable "principal_user_arn" {
   default = "arn:aws:iam::579375260812:user/camila"
 }
 
-variable "bucket_name_backend"
-{
+variable "bucket_name_backend" {
   default = "sistemapedidos-eks-backend"
 }
