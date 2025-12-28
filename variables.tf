@@ -13,7 +13,7 @@ variable "expiry_hours" {
 }
 
 locals {
-  expiry_iso = timestamp(timeadd(timestamp(), "${var.expiry_hours}h"))
+  expiry_iso = timeadd(timestamp(), format("%dh", var.expiry_hours))
 }
 
 variable "tags_prod" {
