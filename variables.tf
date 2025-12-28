@@ -19,7 +19,7 @@ locals {
 variable "tags_prod" {
   type = map(any)
   default = {
-    Name        = "TF-EKS",
+    Name        = "TFEKS",
     Environment = "Production",
     School = "FIAP",
     Year = "2025"
@@ -44,5 +44,5 @@ variable "principal_user_arn" {
 }
 
 variable "bucket_name_backend" {
-  default = "sistemapedidos-eks-backend"
+  default = "sistemapedidos-eks"
 }
